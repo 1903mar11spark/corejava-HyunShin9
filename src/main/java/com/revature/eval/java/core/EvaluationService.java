@@ -219,11 +219,16 @@ public class EvaluationService {
 	public String cleanPhoneNumber(String string) {
 		
 		if(string.charAt(0)=='1') {
+			
 			string=string.substring(1);
+			
 		}
 		string=string.replaceAll("[^0-9]","");
-		if((string.length()<11)&&(string.length()>9)) {
+		
+		if((string.length()<11)&&(string.length() > 9)) {
+			
 			return string;
+			
 		}else throw new IllegalArgumentException();
 	}
 
@@ -351,7 +356,9 @@ public class EvaluationService {
 			String s = String.valueOf(arr[i].charAt(0));
 			
 			if(s.matches("a|e|i|o|u")) {
+				
 				arr[i] = arr[i]+"ay";
+				
 				System.out.println(arr[i]);
 			}
 			else {
@@ -385,15 +392,22 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isArmstrongNumber(int input) {
+		
 		String inta = Integer.toString(input);
+		
 		String[] arr;
+		
 		arr = inta.split("");
+		
 		int result = 0;
+		
 		int[] intArr = new int[arr.length];
 		
 		
 		for (int i = 0 ; i < arr.length; i++) {
+			
 			int q = Integer.parseInt(arr[i]);
+			
 			intArr[i] = q;
 			
 			result += Math.pow(intArr[i], intArr.length);
@@ -401,9 +415,12 @@ public class EvaluationService {
 		}
 		
 		if(result == input) {
+			
 			return true;
+			
 		}
 		else {
+			
 			return false;
 		}
 		
@@ -423,18 +440,30 @@ public class EvaluationService {
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		
 		List<Long> list = new ArrayList<Long>();
-		while (l%2 == 0) {
+		
+		while (l % 2 == 0) {
+			
 			list.add(2l);
+			
 			l = l/2;
+			
 		}
+		
 		for (long i = 3; i < 1/2; i +=2) {
-			while (l%i == 0 ) {
+			
+			while (l % i == 0 ) {
+				
 				list.add(i);
+				
 				l = l/i;
 			}
+			
 		}if (l>2) {
+			
 			list.add(l);
+			
 		}
+		
 		return list;
 	}
 
@@ -473,27 +502,41 @@ public class EvaluationService {
 		}
 
 		public String rotate(String string) {
+			
 			byte[] b = string.getBytes();
 			
 			for (int i = 0; i < string.length(); i++) {
+				
 				if ((b[i] > 64 ) && (b[i] < 91)) {
+					
 					b[i] = (byte) (b[i] - 64 + key);
+					
 					if (b[i] > 26) {
+						
 						b[i] = (byte) (b[i] - 26);
+						
 					}
+					
 					b[i] = (byte) (b[i] + 64);
+					
 				}
 				
 				if((b[i]>96) && (b[i]<123)) {
+					
 					b[i] = (byte) (b[i] - 96 + key);
+					
 					if (b[i] > 26) {
+						
 						b[i] = (byte) (b[i] - 26);
+						
 					}
+					
 					b[i] = (byte) (b[i] + 96);
 				}
 				
 			}
 			String str = new String(b);
+			
 			return str;
 		}
 
@@ -512,15 +555,21 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int i) {
+		
 	      ArrayList<Integer> primeNumbers = new ArrayList<Integer>();
 
-	       for (int j = 1; j <= 105743; j++) { 		  	  
+	       for (int j = 1; j <= 105743; j++) { 
+	    	   
 	          int counter = 0; 	
 	          
 	          for(int n = j; n >= 1; n--) {
+	        	  
 	             if(j % n == 0) {
+	            	 
 	            	 counter = counter + 1;
+	            	 
 	             }
+	             
 	          }
 	          
 	          if (counter == 2) {
@@ -565,26 +614,43 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String encode(String string) {
+			
 			string=string.toLowerCase();
+			
 			string=string.replaceAll("[^a-z0-9]","");
 			
 			byte[] b=string.getBytes();
+			
 			for(int i=0;i<string.length();i++) {
+				
 				int j;
+				
 				if(b[i]>109&&b[i]<123) {
+					
 					j=b[i]-109;
+					
 					b[i]=(byte) (110-j);
-				}else 	if(b[i]<110&&b[i]>96) {
+					
+				}else 	
+					if(b[i]<110&&b[i]>96) {
+					
 					j=110-b[i];
+					
 					b[i]=(byte) (109+j);
 				}
 			}	
 				String str2="";
+				
 				String str=new String(b);
+				
 				for(int i=0;i<str.length();i++) {
+					
 					if(i%5==0) {
+						
 						str2=str2+" ";
+						
 					}
+					
 					str2=str2+str.charAt(i);
 					
 				}
@@ -600,21 +666,34 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String decode(String string) {
+			
 			string=string.toLowerCase();
+			
 			string=string.replaceAll(" ","");
 			
 			byte[] b=string.getBytes();
+			
 			for(int i=0;i<string.length();i++) {
+				
 				int j;
+				
 				if(b[i]>109&&b[i]<123) {
+					
 					j=b[i]-109;
+					
 					b[i]=(byte) (110-j);
-				}else 	if(b[i]<110&&b[i]>96) {
+					
+				}else 	
+					
+					if(b[i]<110&&b[i]>96) {
+					
 					j=110-b[i];
+					
 					b[i]=(byte) (109+j);
 				}
 			}	
 				String str=new String(b);
+				
 			return str;
 		
 		}
@@ -669,11 +748,13 @@ public class EvaluationService {
 		int counter = 10;
 		
 		for (int j = 0 ; j < arr2.size(); j ++) {
-			System.out.println(arr2.get(j));
+			
 			result += arr2.get(j) * counter;
+			
 			counter --;
 		}
 		if (result % 11 == 0) {
+			
 			return true;
 		}
 		else {
@@ -700,11 +781,15 @@ public class EvaluationService {
 			return false;
 		}
 		String[] arr = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+		
 		String rString = string.replaceAll("\\s+", "");
 		
 		String[] arr1 = rString.split("");
+		
 		Set<String> result = new HashSet<String>(); 
+		
 		ArrayList<String> compare = new ArrayList<String>(Arrays.asList(arr));
+		
 		ArrayList<String> comparings = new ArrayList<String>(Arrays.asList(arr1));
 		
 		for (int i = 0 ; i < comparings.size(); i ++) {
