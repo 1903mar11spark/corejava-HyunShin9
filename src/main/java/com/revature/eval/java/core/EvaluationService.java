@@ -218,18 +218,19 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		
-		if(string.charAt(0)=='1') {
+		if(string.charAt(0) =='1') {
 			
-			string=string.substring(1);
+			string = string.substring(1);
 			
 		}
-		string=string.replaceAll("[^0-9]","");
+		string = string.replaceAll("[^0-9]" ,"");
 		
 		if((string.length()<11)&&(string.length() > 9)) {
 			
 			return string;
 			
-		}else throw new IllegalArgumentException();
+		}
+		else throw new IllegalArgumentException();
 	}
 
 	/**
@@ -556,6 +557,9 @@ public class EvaluationService {
 	 */
 	public int calculateNthPrime(int i) {
 		
+		if ( i == 0 ) {
+			throw new IllegalArgumentException();
+		}
 	      ArrayList<Integer> primeNumbers = new ArrayList<Integer>();
 
 	       for (int j = 1; j <= 105743; j++) { 
@@ -615,43 +619,45 @@ public class EvaluationService {
 		 */
 		public static String encode(String string) {
 			
-			string=string.toLowerCase();
+			string = string.toLowerCase();
 			
-			string=string.replaceAll("[^a-z0-9]","");
+			string = string.replaceAll("[^a-z0-9]","");
 			
-			byte[] b=string.getBytes();
+			byte[] bit = string.getBytes();
 			
 			for(int i=0;i<string.length();i++) {
 				
 				int j;
 				
-				if(b[i]>109&&b[i]<123) {
+				if(bit [i]>109 && bit [i]<123) {
 					
-					j=b[i]-109;
+					j = bit [i] - 109;
 					
-					b[i]=(byte) (110-j);
+					bit [i] = (byte) (110 - j);
 					
-				}else 	
-					if(b[i]<110&&b[i]>96) {
+				}
+				else 	
+					 
+					if(bit [i] < 110 && bit [i] > 96) {
 					
-					j=110-b[i];
+					j= 110 - bit [i];
 					
-					b[i]=(byte) (109+j);
+					bit [i] = (byte) (109 + j);
 				}
 			}	
-				String str2="";
+				String str2 = "";
 				
-				String str=new String(b);
+				String str = new String(bit);
 				
-				for(int i=0;i<str.length();i++) {
+				for(int i = 0 ;i < str.length(); i++) {
 					
-					if(i%5==0) {
+					if( i % 5 == 0) {
 						
-						str2=str2+" ";
+						str2 = str2 + " ";
 						
 					}
 					
-					str2=str2+str.charAt(i);
+					str2 = str2 + str.charAt(i);
 					
 				}
 			
@@ -667,32 +673,33 @@ public class EvaluationService {
 		 */
 		public static String decode(String string) {
 			
-			string=string.toLowerCase();
+			string = string.toLowerCase();
 			
-			string=string.replaceAll(" ","");
+			string = string.replaceAll(" ","");
 			
-			byte[] b=string.getBytes();
+			byte[] bit = string.getBytes();
 			
-			for(int i=0;i<string.length();i++) {
+			for(int i = 0; i<string.length(); i++) {
 				
 				int j;
 				
-				if(b[i]>109&&b[i]<123) {
+				if(bit [i] > 109 && bit [i] < 123) {
 					
-					j=b[i]-109;
+					j = bit [i] - 109;
 					
-					b[i]=(byte) (110-j);
+					bit [i] = (byte) (110-j);
 					
-				}else 	
+				}
+				else 	
 					
-					if(b[i]<110&&b[i]>96) {
+					if(bit [i] < 110 && bit [i]>96) {
 					
-					j=110-b[i];
+					j= 110 - bit[i];
 					
-					b[i]=(byte) (109+j);
+					bit [i] = (byte) (109 + j);
 				}
 			}	
-				String str=new String(b);
+				String str = new String(bit);
 				
 			return str;
 		
@@ -845,9 +852,7 @@ public class EvaluationService {
 //		
 //		System.out.println(d);
 		
-		LocalDateTime f =d.toInstant()
-			      .atZone(ZoneId.systemDefault())
-			      .toLocalDateTime();
+		LocalDateTime f = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 //		long seconding = given.getLong(ChronoField.SECOND_OF_MINUTE);
 //		
 //		System.out.println(seconding);
